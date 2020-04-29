@@ -1,0 +1,26 @@
+<!-- <h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+ -->
+<div class="container mt-3">
+	<%= render 'books/error_message', book: @user %>
+	<h2>User info</h2>
+	<div class="row">
+		<%= form_for(@user) do |f| %>
+			<label>Name</label>
+			<div class="col mb-2">
+				<%= f.text_field :name, autofocus: true %>
+			</div>
+			<label>Image</label>
+			<div class="col mb-2">
+				<%= f.attachment_field :profile_image %>
+			</div>
+			<label>Introduction</label>
+			<div class="col mb-2">
+				<%= f.text_area :introduction, autofocus: true %>
+			</div>
+			<div class="col">
+				<%= f.submit "Update User", class: "btn btn-secondary" %>
+			</div>
+		<% end %>
+	</div>
+</div>

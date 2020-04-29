@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers</title>
+    <%= csrf_meta_tags %>
+     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+  </head>
+
+  <body>
+
+    <header class="navbar navbar-inverse">
+          <nav class="nav navbar-nav navbar-left"><span><h1>Bookers</h1></span></nav>
+          <nav>
+            <% if user_signed_in? %>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="nav-link"><%= link_to ' Home', user_path(current_user.id), class: "text-light fi-home" %></li>
+                <li class="nav-link"><%= link_to ' Users', users_path, class: "text-light fi-person" %></li>
+                <li class="nav-link"><%= link_to ' Books', books_path, class: "text-light fi-book" %></li>
+                <li class="nav-link"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "text-light fi-account-logout" %></li>
+              </ul>
+            <% else %>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="nav-link"><%= link_to ' Home', root_path, class: "text-light fi-home" %></li>
+                <li class="nav-link"><%= link_to ' About', home_about_path, class: "text-light fi-link-intact" %></li>
+                <li class="nav-link"><%= link_to ' sign up', new_user_registration_path, class: "text-light fi-pencil" %></li>
+                <li class="nav-link"><%= link_to ' login', new_user_session_path, class: "text-light fi-account-login" %></li>
+              </ul>
+            <% end %>
+          </nav>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key} text-success") %>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+    <footer>
+      <div class="container">
+           <div class="d-flex justify-content-end"><p>CopyRight Infratop.inc</p></div>
+
+      </div>
+    </footer>
+  </body>
+</html>

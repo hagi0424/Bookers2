@@ -1,0 +1,18 @@
+<div class="mt-5">
+	<h2>New book</h2>
+	<div class="row">
+		<%= form_for(book) do |f| %>
+			<label>Title</label>
+			<div class="col">
+				<%= f.text_field :title %>
+			</div>
+			<label>Opinion</label>
+			<div class="col">
+				<%= f.text_area :body %>
+			</div>
+			<div class="col">
+				<%= f.submit 'Create Book', class: "btn btn-secondary mt-1" %>
+			</div>
+		<% end %>
+	</div>
+</div>

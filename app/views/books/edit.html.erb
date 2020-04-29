@@ -1,0 +1,23 @@
+<!-- <h1>Books#edit</h1>
+<p>Find me in app/views/books/edit.html.erb</p>
+ -->
+<div class="container">
+	<%= render 'error_message', book: @book %>
+	<h1>Editing Book</h1>
+	<div class="row">
+		<%= form_for(@book) do |f| %>
+			<label>Title</label>
+			<div class="col mb-2">
+				<%= f.text_field :title %>
+			</div>
+			<label>Opinion</label>
+			<div class="col mb-2">
+				<%= f.text_area :body %>
+			</div>
+			<%= link_to 'Show', book_path(@book.id) %>
+			|
+			<%= link_to 'Back', books_path %>
+			<%= f.submit 'Update Book', class: "btn btn-secondary ml-2" %>
+		<% end %>
+	</div>
+</div>
